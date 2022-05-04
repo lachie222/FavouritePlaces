@@ -48,6 +48,8 @@
 		2D268537282240C200ED3FBE /* FavouritePlacesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FavouritePlacesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D26853B282240C200ED3FBE /* FavouritePlacesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlacesUITests.swift; sourceTree = "<group>"; };
 		2D26853D282240C200ED3FBE /* FavouritePlacesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlacesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2D26854A2822440800ED3FBE /* Place+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Place+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2D26854B2822440800ED3FBE /* Place+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Place+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,8 @@
 		2D26850F282240BE00ED3FBE = {
 			isa = PBXGroup;
 			children = (
+				2D26854A2822440800ED3FBE /* Place+CoreDataClass.swift */,
+				2D26854B2822440800ED3FBE /* Place+CoreDataProperties.swift */,
 				2D26851A282240BF00ED3FBE /* FavouritePlaces */,
 				2D268530282240C200ED3FBE /* FavouritePlacesTests */,
 				2D26853A282240C200ED3FBE /* FavouritePlacesUITests */,
@@ -438,7 +442,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = au.edu.griffith.ict.prog.FavouritePlaces;
+				PRODUCT_BUNDLE_IDENTIFIER = griffithuni.FavouritePlaces;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -467,7 +471,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = au.edu.griffith.ict.prog.FavouritePlaces;
+				PRODUCT_BUNDLE_IDENTIFIER = griffithuni.FavouritePlaces;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
