@@ -9,8 +9,15 @@ import SwiftUI
 
 struct PlaceRowView: View {
     @ObservedObject var place: Place
+    @State var image = Image(systemName: "photo").resizable()
     var body: some View {
-        Text("\(place.placeName)")
+        HStack {
+            image.aspectRatio(contentMode: .fit)
+                .frame(width: 45, height: 30, alignment: .center)
+            Text(place.placeName)
+        }.task {
+            image = await place.retrieveImage()
+        }
     }
 }
 

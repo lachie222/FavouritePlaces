@@ -23,7 +23,6 @@ struct ContentView: View {
                     addPlace(context: viewContext)
                 }, label: {Image(systemName: "plus")}))
             }
-            Text("Select an item")
         }
 }
 
