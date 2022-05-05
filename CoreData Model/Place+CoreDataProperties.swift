@@ -2,7 +2,7 @@
 //  Place+CoreDataProperties.swift
 //  FavouritePlaces
 //
-//  Created by Lachlan Manson on 4/5/2022.
+//  Created by Lachlan Manson on 5/5/2022.
 //
 //
 
@@ -16,11 +16,11 @@ extension Place {
         return NSFetchRequest<Place>(entityName: "Place")
     }
 
-    @NSManaged public var name: String?
-    @NSManaged public var notes: String?
-    @NSManaged public var imageURL: String?
+    @NSManaged public var imageURL: URL?
     @NSManaged public var latitude: Double
     @NSManaged public var longitude: Double
+    @NSManaged public var name: String?
+    @NSManaged public var notes: String?
 
 }
 
