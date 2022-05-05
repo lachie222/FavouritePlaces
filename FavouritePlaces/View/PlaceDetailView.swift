@@ -23,73 +23,76 @@ struct PlaceDetailView: View {
     var body: some View {
         VStack (alignment: .center, spacing: 5) {
             if editMode?.wrappedValue == .active {
-                Text("Edit Place Name: ")
-                TextField(place.placeName, text:$placeName) {
-                        place.placeName = placeName
-                        placeName = ""
-                    }
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 4)
-                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.black, lineWidth: 1))
-            .padding([.leading, .trailing], 15)
+                VStack {
+                    Text("Edit Place Name: ")
+                    TextField(place.placeName, text:$placeName) {
+                            place.placeName = placeName
+                            placeName = ""
+                        }
+                    .textFieldStyle(PrimaryTextFieldStyle())
+            }.padding([.leading, .trailing], 15)
             .multilineTextAlignment(.center)
+                
                 List {
-                    Text("Edit Image URL: ").frame(maxWidth: .infinity, alignment: .center)
-                    TextField(place.placeUrlString, text:$placeImageURL) {
-                            place.placeUrlString = placeImageURL
-                            placeImageURL = ""
-                        }
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 4)
-                        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.black, lineWidth: 1))
-                .padding([.leading, .trailing], 15)
+                    VStack {
+                        Text("Edit Image URL: ").frame(maxWidth: .infinity, alignment: .center)
+                        TextField(place.placeUrlString, text:$placeImageURL) {
+                                place.placeUrlString = placeImageURL
+                                placeImageURL = ""
+                            }
+                        .textFieldStyle(PrimaryTextFieldStyle())
+                }.padding([.leading, .trailing], 15)
                 .multilineTextAlignment(.center)
-                    Text("Edit Place Notes: ").frame(maxWidth: .infinity, alignment: .center)
-                    TextField(place.placeNotes, text:$placeNotes) {
-                            place.placeNotes = placeNotes
-                            placeNotes = ""
-                        }
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 4)
-                        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.black, lineWidth: 1))
-                .padding([.leading, .trailing], 15)
+                    
+                    VStack {
+                        Text("Edit Place Notes: ").frame(maxWidth: .infinity, alignment: .center)
+                        TextField(place.placeNotes, text:$placeNotes) {
+                                place.placeNotes = placeNotes
+                                placeNotes = ""
+                            }
+                        .textFieldStyle(PrimaryTextFieldStyle())
+                }.padding([.leading, .trailing], 15)
                 .multilineTextAlignment(.center)
-                    Text("Edit Place Latitude: ").frame(maxWidth: .infinity, alignment: .center)
+                    
+                    VStack {
+                        Text("Edit Place Latitude: ").frame(maxWidth: .infinity, alignment: .center)
+                        TextField(place.placeLatitude, text:$placeLatitude) {
+                            if Double(placeLatitude) != nil {
+                                place.placeLatitude = placeLatitude
+                                latitudeValidity = false
+                            } else {
+                                placeLatitude = ""
+                                latitudeValidity = true
+                            }
+                            }
+                        .textFieldStyle(PrimaryTextFieldStyle())
+                }.padding([.leading, .trailing], 15)
+                .multilineTextAlignment(.center)
                     if latitudeValidity == true {
-                        Text("Please Enter a Valid Number").foregroundColor(.red)
+                        Text("Please Enter a Valid Number")
+                            .foregroundColor(.red)
+                            .frame(maxWidth: .infinity, alignment: .center)
                     }
-                    TextField(String(place.latitude), text:$placeLatitude) {
-                        if Double(placeLatitude) != nil {
-                            place.latitude = Double(placeLatitude) ?? 0.0
-                            latitudeValidity = false
-                        } else {
-                            placeLatitude = ""
-                            latitudeValidity = true
-                        }
-                        }
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 4)
-                        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.black, lineWidth: 1))
-                .padding([.leading, .trailing], 15)
+                    
+                    VStack {
+                        Text("Edit Place Longitude: ").frame(maxWidth: .infinity, alignment: .center)
+                        TextField(place.placeLongitude, text:$placeLongitude) {
+                            if Double(placeLongitude) != nil {
+                                place.placeLongitude = placeLongitude
+                                longitudeValidity = false
+                            } else {
+                                placeLongitude = ""
+                                longitudeValidity = true
+                            }
+                            }
+                        .textFieldStyle(PrimaryTextFieldStyle())
+                }.padding([.leading, .trailing], 15)
                 .multilineTextAlignment(.center)
-                    Text("Edit Place Longitude: ").frame(maxWidth: .infinity, alignment: .center)
                     if longitudeValidity == true {
-                        Text("Please Enter a Valid Number").foregroundColor(.red)
+                        Text("Please Enter a Valid Number")
+                            .foregroundColor(.red)
+                            .frame(maxWidth: .infinity, alignment: .center)
                     }
-                    TextField(String(place.longitude), text:$placeLongitude) {
-                        if Double(placeLongitude) != nil {
-                            place.longitude = Double(placeLongitude) ?? 0.0
-                            longitudeValidity = false
-                        } else {
-                            placeLongitude = ""
-                            longitudeValidity = true
-                        }
-                        }
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 4)
-                        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.black, lineWidth: 1))
-                .padding([.leading, .trailing], 15)
-                .multilineTextAlignment(.center)
                 }
             } else {
                 Text(place.placeName)
@@ -97,10 +100,20 @@ struct PlaceDetailView: View {
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity, alignment: .center)
                 image.aspectRatio(contentMode: .fit)
+                
                 List {
-                    Text("Place Notes: \(place.placeNotes)")
-                    Text("Place Latitude: \(place.latitude)")
-                    Text("Place Longitude: \(place.longitude)")
+                    VStack (alignment: .leading) {
+                        Text("Notes").fontWeight(.semibold)
+                        Text(place.placeNotes)
+                    }
+                    HStack {
+                        Text("Latitude: ").fontWeight(.semibold)
+                        Text(place.placeLatitude)
+                    }
+                    HStack {
+                        Text("Longitude: ").fontWeight(.semibold)
+                        Text(place.placeLongitude)
+                    }
                 }
             }
         }.task {

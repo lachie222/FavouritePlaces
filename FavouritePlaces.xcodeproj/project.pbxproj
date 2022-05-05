@@ -21,6 +21,7 @@
 		2D26855A28238EFE00ED3FBE /* PlaceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D26855928238EFE00ED3FBE /* PlaceDetailView.swift */; };
 		2D4AEC21282395EB0076AD70 /* PlaceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4AEC20282395EB0076AD70 /* PlaceListView.swift */; };
 		2D4AEC232823981F0076AD70 /* PlaceCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4AEC222823981F0076AD70 /* PlaceCRUD.swift */; };
+		2D4AEC2A2823C38D0076AD70 /* PrimaryTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4AEC292823C38D0076AD70 /* PrimaryTextFieldStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,10 +57,9 @@
 		2D26855028238B3B00ED3FBE /* PlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewModel.swift; sourceTree = "<group>"; };
 		2D26855728238EEE00ED3FBE /* PlaceRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRowView.swift; sourceTree = "<group>"; };
 		2D26855928238EFE00ED3FBE /* PlaceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailView.swift; sourceTree = "<group>"; };
-		2D4AEC1D282391D00076AD70 /* Place+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Place+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		2D4AEC1F282392060076AD70 /* Place+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Place+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2D4AEC20282395EB0076AD70 /* PlaceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListView.swift; sourceTree = "<group>"; };
 		2D4AEC222823981F0076AD70 /* PlaceCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCRUD.swift; sourceTree = "<group>"; };
+		2D4AEC292823C38D0076AD70 /* PrimaryTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTextFieldStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +111,7 @@
 		2D26851A282240BF00ED3FBE /* FavouritePlaces */ = {
 			isa = PBXGroup;
 			children = (
+				2D4AEC2B2823C4690076AD70 /* Style */,
 				2D26855628238E9D00ED3FBE /* View */,
 				2D26854F28238B2300ED3FBE /* ViewModel */,
 				2D26851B282240BF00ED3FBE /* FavouritePlacesApp.swift */,
@@ -150,8 +151,6 @@
 		2D26854E2822487100ED3FBE /* CoreData Model */ = {
 			isa = PBXGroup;
 			children = (
-				2D4AEC1F282392060076AD70 /* Place+CoreDataClass.swift */,
-				2D4AEC1D282391D00076AD70 /* Place+CoreDataProperties.swift */,
 			);
 			path = "CoreData Model";
 			sourceTree = "<group>";
@@ -174,6 +173,14 @@
 				2D26855928238EFE00ED3FBE /* PlaceDetailView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2D4AEC2B2823C4690076AD70 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				2D4AEC292823C38D0076AD70 /* PrimaryTextFieldStyle.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D4AEC2A2823C38D0076AD70 /* PrimaryTextFieldStyle.swift in Sources */,
 				2D268525282240C200ED3FBE /* Persistence.swift in Sources */,
 				2D26855828238EEE00ED3FBE /* PlaceRowView.swift in Sources */,
 				2D4AEC21282395EB0076AD70 /* PlaceListView.swift in Sources */,

@@ -39,6 +39,24 @@ extension Place {
         }
     }
     
+    var placeLatitude: String {
+        get { String(latitude) }
+        set {
+            guard let newLatitude = Double(newValue) else { return }
+            latitude = newLatitude
+            save()
+        }
+    }
+    
+    var placeLongitude: String {
+        get { String(longitude) }
+        set {
+            guard let newLongitude = Double(newValue) else { return }
+            longitude = newLongitude
+            save()
+        }
+    }
+    
     var placeLocation: Array<Double> {
         return [latitude, longitude]
     }

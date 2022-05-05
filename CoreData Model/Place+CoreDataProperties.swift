@@ -17,8 +17,8 @@ extension Place {
     }
 
     @NSManaged public var imageURL: URL?
-    @NSManaged public var latitude: Double
-    @NSManaged public var longitude: Double
+    @NSManaged public var latitude: Int16
+    @NSManaged public var longitude: Int16
     @NSManaged public var name: String?
     @NSManaged public var notes: String?
 
