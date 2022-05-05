@@ -28,7 +28,9 @@ struct PlaceDetailView: View {
                     TextField(place.placeName, text:$placeName) {
                             place.placeName = placeName
                             placeName = ""
-                        }
+                    }.onTapGesture {
+                        placeName = place.placeName
+                    }
                     .textFieldStyle(PrimaryTextFieldStyle())
             }.padding([.leading, .trailing], 15)
             .multilineTextAlignment(.center)
@@ -39,7 +41,9 @@ struct PlaceDetailView: View {
                         TextField(place.placeUrlString, text:$placeImageURL) {
                                 place.placeUrlString = placeImageURL
                                 placeImageURL = ""
-                            }
+                        }.onTapGesture {
+                            placeImageURL = place.placeUrlString
+                        }
                         .textFieldStyle(PrimaryTextFieldStyle())
                 }.padding([.leading, .trailing], 15)
                 .multilineTextAlignment(.center)
@@ -49,7 +53,9 @@ struct PlaceDetailView: View {
                         TextField(place.placeNotes, text:$placeNotes) {
                                 place.placeNotes = placeNotes
                                 placeNotes = ""
-                            }
+                        }.onTapGesture {
+                            placeNotes = place.placeNotes
+                        }
                         .textFieldStyle(PrimaryTextFieldStyle())
                 }.padding([.leading, .trailing], 15)
                 .multilineTextAlignment(.center)
@@ -60,11 +66,14 @@ struct PlaceDetailView: View {
                             if Double(placeLatitude) != nil {
                                 place.placeLatitude = placeLatitude
                                 latitudeValidity = false
+                                placeLatitude = ""
                             } else {
                                 placeLatitude = ""
                                 latitudeValidity = true
                             }
-                            }
+                        }.onTapGesture {
+                            placeLatitude = place.placeLatitude
+                        }
                         .textFieldStyle(PrimaryTextFieldStyle())
                 }.padding([.leading, .trailing], 15)
                 .multilineTextAlignment(.center)
@@ -80,11 +89,14 @@ struct PlaceDetailView: View {
                             if Double(placeLongitude) != nil {
                                 place.placeLongitude = placeLongitude
                                 longitudeValidity = false
+                                placeLongitude = ""
                             } else {
                                 placeLongitude = ""
                                 longitudeValidity = true
                             }
-                            }
+                        }.onTapGesture {
+                            placeLongitude = place.placeLongitude
+                        }
                         .textFieldStyle(PrimaryTextFieldStyle())
                 }.padding([.leading, .trailing], 15)
                 .multilineTextAlignment(.center)
@@ -94,6 +106,7 @@ struct PlaceDetailView: View {
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
+                
             } else {
                 Text(place.placeName)
                     .font(.largeTitle)
@@ -103,7 +116,7 @@ struct PlaceDetailView: View {
                 
                 List {
                     VStack (alignment: .leading) {
-                        Text("Notes").fontWeight(.semibold)
+                        Text("Notes: ").fontWeight(.semibold)
                         Text(place.placeNotes)
                     }
                     HStack {
