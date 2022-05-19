@@ -24,6 +24,7 @@
 		2D4AEC2A2823C38D0076AD70 /* PrimaryTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4AEC292823C38D0076AD70 /* PrimaryTextFieldStyle.swift */; };
 		2DD00D6F2835F0FD00CB6EC1 /* MapDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD00D6E2835F0FD00CB6EC1 /* MapDetailView.swift */; };
 		2DD00D762835F39200CB6EC1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD00D742835F38200CB6EC1 /* CoreLocation.framework */; };
+		2DD00D7A2836442300CB6EC1 /* CoordinateRegionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD00D792836442300CB6EC1 /* CoordinateRegionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		2DD00D702835F1FF00CB6EC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2DD00D722835F1FF00CB6EC1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		2DD00D742835F38200CB6EC1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		2DD00D792836442300CB6EC1 /* CoordinateRegionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateRegionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				2D26855028238B3B00ED3FBE /* PlaceViewModel.swift */,
+				2DD00D792836442300CB6EC1 /* CoordinateRegionViewModel.swift */,
 				2D4AEC222823981F0076AD70 /* PlaceCRUD.swift */,
 			);
 			path = ViewModel;
@@ -338,6 +341,7 @@
 				2D26855828238EEE00ED3FBE /* PlaceRowView.swift in Sources */,
 				2D4AEC21282395EB0076AD70 /* PlaceListView.swift in Sources */,
 				2D4AEC232823981F0076AD70 /* PlaceCRUD.swift in Sources */,
+				2DD00D7A2836442300CB6EC1 /* CoordinateRegionViewModel.swift in Sources */,
 				2D26855128238B3B00ED3FBE /* PlaceViewModel.swift in Sources */,
 				2D268528282240C200ED3FBE /* FavouritePlaces.xcdatamodeld in Sources */,
 				2D26855A28238EFE00ED3FBE /* PlaceDetailView.swift in Sources */,

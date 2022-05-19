@@ -44,7 +44,7 @@ extension Place {
     var placeLatitude: String {
         get { String(latitude) }
         set {
-            guard let newLatitude = CLLocationDegrees(newValue) else {
+            guard let newLatitude = Double(newValue) else {
                 print ("Invalid Latitude")
                 return
             }
@@ -56,7 +56,7 @@ extension Place {
     var placeLongitude: String {
         get { String(longitude) }
         set {
-            guard let newLongitude = CLLocationDegrees(newValue) else {
+            guard let newLongitude = Double(newValue) else {
                 print("Invalid Longitude")
                 return
             }
@@ -66,12 +66,28 @@ extension Place {
     }
     
     var placeLocation: MKCoordinateRegion {
-        return MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: latitude,
-                                           longitude: longitude),
-            latitudinalMeters: 750,
-            longitudinalMeters: 750
-        )
+        get {
+                return MKCoordinateRegion(
+                    center: CLLocationCoordinate2D(latitude: latitude,
+                                                   longitude: longitude),
+                    latitudinalMeters: 5000,
+                    longitudinalMeters: 5000
+                )
+        }
+        
+        set(newRegion) {
+            let newLatitude = newRegion.center.latitude
+            let newLongitude = newRegion.center.longitude
+            
+            if CLLocationCoordinate2DIsValid(CLLocationCoordinate2D(latitude: newLatitude, longitude: newLongitude)) {
+                
+                latitude = newLatitude
+                longitude = newLongitude
+                save()
+            } else {
+                print("Region Invalid")
+            }
+        }
     }
     
     func retrieveImage() async -> Image {
@@ -101,5 +117,7 @@ extension Place {
         }
         return true
     }
+    
 
 }
+

@@ -6,14 +6,13 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct PlaceDetailView: View {
     @Environment(\.editMode) var editMode
     @ObservedObject var place: Place
     @State var placeName = ""
     @State var placeNotes = ""
-    @State var placeLatitude = ""
-    @State var placeLongitude = ""
     @State var placeImageURL = ""
     @State var longitudeValidity = false
     @State var latitudeValidity = false
@@ -60,51 +59,6 @@ struct PlaceDetailView: View {
                 }.padding([.leading, .trailing], 15)
                 .multilineTextAlignment(.center)
                     
-                    VStack {
-                        Text("Edit Place Latitude: ").frame(maxWidth: .infinity, alignment: .center)
-                        TextField(place.placeLatitude, text:$placeLatitude) {
-                            if Double(placeLatitude) != nil {
-                                place.placeLatitude = placeLatitude
-                                latitudeValidity = false
-                                placeLatitude = ""
-                            } else {
-                                placeLatitude = ""
-                                latitudeValidity = true
-                            }
-                        }.onTapGesture {
-                            placeLatitude = place.placeLatitude
-                        }
-                        .textFieldStyle(PrimaryTextFieldStyle())
-                }.padding([.leading, .trailing], 15)
-                .multilineTextAlignment(.center)
-                    if latitudeValidity == true {
-                        Text("Please Enter a Valid Number")
-                            .foregroundColor(.red)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                    }
-                    
-                    VStack {
-                        Text("Edit Place Longitude: ").frame(maxWidth: .infinity, alignment: .center)
-                        TextField(place.placeLongitude, text:$placeLongitude) {
-                            if Double(placeLongitude) != nil {
-                                place.placeLongitude = placeLongitude
-                                longitudeValidity = false
-                                placeLongitude = ""
-                            } else {
-                                placeLongitude = ""
-                                longitudeValidity = true
-                            }
-                        }.onTapGesture {
-                            placeLongitude = place.placeLongitude
-                        }
-                        .textFieldStyle(PrimaryTextFieldStyle())
-                }.padding([.leading, .trailing], 15)
-                .multilineTextAlignment(.center)
-                    if longitudeValidity == true {
-                        Text("Please Enter a Valid Number")
-                            .foregroundColor(.red)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                    }
                 }
                 
             } else {
@@ -114,7 +68,8 @@ struct PlaceDetailView: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                 image.aspectRatio(contentMode: .fit)
                 
-                MapDetailView(place: place, placeLocation: place.placeLocation)
+                NavigationLink(destination: MapDetailView(place: place, region: place.placeLocation).navigationBarItems(trailing: EditButton()), label: {Text("Map View")})
+
                 
                 List {
                     VStack (alignment: .leading) {
