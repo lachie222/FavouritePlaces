@@ -114,6 +114,8 @@ struct PlaceDetailView: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                 image.aspectRatio(contentMode: .fit)
                 
+                MapDetailView()
+                
                 List {
                     VStack (alignment: .leading) {
                         Text("Notes: ").fontWeight(.semibold)
