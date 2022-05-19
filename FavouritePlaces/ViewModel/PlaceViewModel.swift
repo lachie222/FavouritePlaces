@@ -90,6 +90,7 @@ extension Place {
         }
     }
     
+    
     func retrieveImage() async -> Image {
         guard let url = imageURL else { return defaultImage}
         if let image = downloadedImages[url] {return image}
@@ -105,6 +106,7 @@ extension Place {
         }
         return defaultImage
     }
+    
     
     
     @discardableResult

@@ -18,7 +18,6 @@ struct PlaceDetailView: View {
     @State var latitudeValidity = false
     @State var image = Image(systemName: "photo")
     
-    
     var body: some View {
         VStack (alignment: .center, spacing: 5) {
             if editMode?.wrappedValue == .active {
@@ -68,21 +67,21 @@ struct PlaceDetailView: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                 image.aspectRatio(contentMode: .fit)
                 
-                NavigationLink(destination: MapDetailView(place: place, region: place.placeLocation).navigationBarItems(trailing: EditButton()), label: {Text("Map View")})
 
                 
                 List {
+                    NavigationLink(destination: MapDetailView(place: place, region: place.placeLocation).navigationBarItems(trailing: EditButton()), label: {
+                        HStack{
+                            MapSnapshotView(region: place.placeLocation)
+                                .frame(width: 150, height: 50, alignment: .center)
+                            Spacer()
+                            Text("Map of \(place.placeName)")
+                        }
+                    }
+                    )
                     VStack (alignment: .leading) {
                         Text("Notes: ").fontWeight(.semibold)
                         Text(place.placeNotes)
-                    }
-                    HStack {
-                        Text("Latitude: ").fontWeight(.semibold)
-                        Text(place.placeLatitude)
-                    }
-                    HStack {
-                        Text("Longitude: ").fontWeight(.semibold)
-                        Text(place.placeLongitude)
                     }
                 }
             }

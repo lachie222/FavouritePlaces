@@ -7,6 +7,8 @@
 
 import SwiftUI
 import CoreData
+import MapKit
+
 struct PlaceListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(
