@@ -10,20 +10,15 @@ import CoreLocation
 import MapKit
 
 struct MapDetailView: View {
-    @State private var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 37.334_900,
-                                       longitude: -122.009_020),
-        latitudinalMeters: 750,
-        longitudinalMeters: 750
-    )
+    @State var placeLocation: MKCoordinateRegion
     
     var body: some View {
-        Map(coordinateRegion: $region)
+        Map(coordinateRegion: $placeLocation)
     }
 }
 
-struct MapDetailView_Previews: PreviewProvider {
+/*struct MapDetailView_Previews: PreviewProvider {
     static var previews: some View {
         MapDetailView()
     }
-}
+}*/

@@ -8,6 +8,8 @@
 import Foundation
 import CoreData
 import SwiftUI
+import CoreLocation
+import MapKit
 
 fileprivate let defaultImage = Image(systemName: "photo")
 fileprivate var downloadedImages = [URL: Image]()
@@ -42,7 +44,10 @@ extension Place {
     var placeLatitude: String {
         get { String(latitude) }
         set {
-            guard let newLatitude = Double(newValue) else { return }
+            guard let newLatitude = CLLocationDegrees(newValue) else {
+                print ("Invalid Latitude")
+                return
+            }
             latitude = newLatitude
             save()
         }
@@ -51,14 +56,22 @@ extension Place {
     var placeLongitude: String {
         get { String(longitude) }
         set {
-            guard let newLongitude = Double(newValue) else { return }
+            guard let newLongitude = CLLocationDegrees(newValue) else {
+                print("Invalid Longitude")
+                return
+            }
             longitude = newLongitude
             save()
         }
     }
     
-    var placeLocation: Array<Double> {
-        return [latitude, longitude]
+    var placeLocation: MKCoordinateRegion {
+        return MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: latitude,
+                                           longitude: longitude),
+            latitudinalMeters: 750,
+            longitudinalMeters: 750
+        )
     }
     
     func retrieveImage() async -> Image {
