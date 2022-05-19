@@ -10,10 +10,15 @@ import CoreLocation
 import MapKit
 
 struct MapDetailView: View {
+    @ObservedObject var place: Place
     @State var placeLocation: MKCoordinateRegion
     
     var body: some View {
-        Map(coordinateRegion: $placeLocation)
+        Map(coordinateRegion: $placeLocation).onChange(of: placeLocation.center.latitude, perform: {newValue in
+            place.latitude = newValue
+        }).onChange(of: placeLocation.center.longitude, perform: {newValue in
+            place.longitude = newValue
+        })
     }
 }
 

@@ -114,7 +114,7 @@ struct PlaceDetailView: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                 image.aspectRatio(contentMode: .fit)
                 
-                MapDetailView(placeLocation: place.placeLocation)
+                MapDetailView(place: place, placeLocation: place.placeLocation)
                 
                 List {
                     VStack (alignment: .leading) {
