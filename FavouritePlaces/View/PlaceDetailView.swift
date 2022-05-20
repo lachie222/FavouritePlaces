@@ -65,7 +65,9 @@ struct PlaceDetailView: View {
                     .font(.largeTitle)
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity, alignment: .center)
-                image.aspectRatio(contentMode: .fit)
+                image.aspectRatio(contentMode: .fit).task {
+                    image = await place.retrieveImage()
+                }
                 
 
                 
@@ -85,8 +87,6 @@ struct PlaceDetailView: View {
                     }
                 }
             }
-        }.task {
-            image = await place.retrieveImage()
         }
     }
 }
