@@ -93,6 +93,57 @@ extension Place {
         }
     }
     
+    func lookupLocation(for placeName: String) {
+        let coder = CLGeocoder()
+        coder.geocodeAddressString(placeName) { optionalPlacemarks, optionalError in
+            if let error = optionalError {
+                print("Error searching \(placeName): \(error.localizedDescription)")
+                return
+            }
+            guard let placemarks = optionalPlacemarks, !placemarks.isEmpty else {
+                print("Placemarks not found")
+                return
+            }
+            let placemark = placemarks[0]
+            guard let location = placemark.location else {
+                print("Placemark does not contain a location")
+                return
+            }
+            self.longitude = location.coordinate.longitude
+            self.latitude = location.coordinate.latitude
+        }
+    }
+
+    func lookupName(for location: CLLocation) {
+        let coder = CLGeocoder()
+        coder.reverseGeocodeLocation(location) { optionalPlacemarks, optionalError in
+            if let error = optionalError {
+                print("Error looking up \(location.coordinate): \(error.localizedDescription)")
+                return
+            }
+            guard let placemarks = optionalPlacemarks, !placemarks.isEmpty else {
+                print("Placemarks came back empty")
+                return
+            }
+            let placemark = placemarks[0]
+            for value in [
+                \CLPlacemark.name,
+                \.country,
+                \.isoCountryCode,
+                \.postalCode,
+                \.administrativeArea,
+                \.subAdministrativeArea,
+                \.locality,
+                \.subLocality,
+                \.thoroughfare,
+                \.subThoroughfare
+            ] {
+                print(String(describing: placemark[keyPath: value]))
+            }
+            self.placeName = placemark.subAdministrativeArea ?? placemark.locality ?? placemark.subLocality ?? placemark.name ?? placemark.thoroughfare ?? placemark.subThoroughfare ?? placemark.country ?? ""
+        }
+    }
+    
     
     func retrieveImage() async -> Image {
         guard let url = imageURL else { return defaultImage}

@@ -15,9 +15,22 @@ struct MapDetailView: View {
     @State var region: MKCoordinateRegion
 
     var body: some View {
-        Map(coordinateRegion: $region).onChange(of: region, perform: {newValue in
-            place.placeLocation = newValue
-        })
+        VStack{
+            Text(place.placeName)
+                .font(.largeTitle)
+                .fontWeight(.semibold)
+                .frame(maxWidth: .infinity, alignment: .center)
+            HStack {
+                Button(action: {place.lookupLocation(for: place.placeName)}, label: {Image(systemName: "text.magnifyingglass")})
+                Text("Search Place: ")
+                TextField("Search Place", text: $place.placeName) {
+                    place.lookupLocation(for: place.placeName)
+                }
+            }
+            Map(coordinateRegion: $region).onChange(of: region, perform: {newValue in
+                place.placeLocation = newValue
+            })
+        }
         
         if editMode?.wrappedValue == .active {
             
@@ -40,8 +53,9 @@ struct MapDetailView: View {
         else {
             Text("Latitude: \(place.placeLatitude)")
             Text("Longitude: \(place.placeLongitude)")
-            Text("Latitude Delta: \(String(place.latitudeMeters))")
-            Text("Longitude Delta: \(String(place.longitudeMeters))")
+            Button("Search Location"){
+                place.lookupName(for: CLLocation(latitude: place.latitude, longitude: place.longitude))
+            }
         }
 
     }
