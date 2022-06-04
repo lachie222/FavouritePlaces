@@ -20,11 +20,13 @@ struct MapDetailView: View {
                 .font(.largeTitle)
                 .fontWeight(.semibold)
                 .frame(maxWidth: .infinity, alignment: .center)
-            HStack {
-                Button(action: {place.lookupLocation(for: place.placeName)}, label: {Image(systemName: "text.magnifyingglass")})
-                Text("Search Place: ")
-                TextField("Search Place", text: $place.placeName) {
-                    place.lookupLocation(for: place.placeName)
+            if editMode?.wrappedValue == .active {
+                HStack {
+                    Button(action: {place.lookupLocation(for: place.placeName)}, label: {Image(systemName: "text.magnifyingglass")})
+                    Text("Search Place: ")
+                    TextField("Search Place", text: $place.placeName) {
+                        place.lookupLocation(for: place.placeName)
+                    }
                 }
             }
             Map(coordinateRegion: $region).onChange(of: region, perform: {newValue in
@@ -40,7 +42,7 @@ struct MapDetailView: View {
         
         if editMode?.wrappedValue == .active {
             
-            List {
+            VStack{
                 VStack {
                     Text("Edit Latitude: ").frame(maxWidth: .infinity, alignment: .center)
                     TextField("Edit Latitude", text: $place.placeLatitude)
@@ -55,13 +57,13 @@ struct MapDetailView: View {
             }.padding([.leading, .trailing], 15)
             .multilineTextAlignment(.center)
             }
-        }
+            Button("Search by Coordinates"){
+                place.lookupName(for: place.placeLocation)
+            }
+            }
         else {
             Text("Latitude: \(place.placeLatitude)")
             Text("Longitude: \(place.placeLongitude)")
-            Button("Search Location"){
-                place.lookupName(for: place.placeLocation)
-            }
         }
 
     }
