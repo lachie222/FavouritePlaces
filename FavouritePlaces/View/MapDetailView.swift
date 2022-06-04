@@ -28,7 +28,13 @@ struct MapDetailView: View {
                 }
             }
             Map(coordinateRegion: $region).onChange(of: region, perform: {newValue in
-                place.placeLocation = newValue
+                place.longitude = newValue.center.longitude
+                place.latitude = newValue.center.latitude
+                place.longitudeMeters = newValue.span.longitudeDelta
+                place.latitudeMeters = newValue.span.latitudeDelta
+            }).onChange(of: place.placeLocation, perform: {newValue in
+                region.center.longitude = place.longitude
+                region.center.latitude = place.latitude
             })
         }
         
@@ -37,14 +43,14 @@ struct MapDetailView: View {
             List {
                 VStack {
                     Text("Edit Latitude: ").frame(maxWidth: .infinity, alignment: .center)
-                    TextField("Edit Latitude", text: $region.latitudeString)
+                    TextField("Edit Latitude", text: $place.placeLatitude)
                     .textFieldStyle(PrimaryTextFieldStyle())
             }.padding([.leading, .trailing], 15)
             .multilineTextAlignment(.center)
                 
                 VStack {
                     Text("Edit Longitude: ").frame(maxWidth: .infinity, alignment: .center)
-                    TextField("Edit Longitude", text: $region.longitudeString)
+                    TextField("Edit Longitude", text: $place.placeLongitude)
                     .textFieldStyle(PrimaryTextFieldStyle())
             }.padding([.leading, .trailing], 15)
             .multilineTextAlignment(.center)
@@ -54,7 +60,7 @@ struct MapDetailView: View {
             Text("Latitude: \(place.placeLatitude)")
             Text("Longitude: \(place.placeLongitude)")
             Button("Search Location"){
-                place.lookupName(for: CLLocation(latitude: place.latitude, longitude: place.longitude))
+                place.lookupName(for: place.placeLocation)
             }
         }
 

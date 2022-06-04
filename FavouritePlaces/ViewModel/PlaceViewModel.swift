@@ -65,33 +65,25 @@ extension Place {
         }
     }
     
-    var placeLocation: MKCoordinateRegion {
+    var placeLocation: CLLocation {
         get {
-                return MKCoordinateRegion(
-                    center: CLLocationCoordinate2D(latitude: latitude,
-                                                   longitude: longitude),
-                    span: MKCoordinateSpan(latitudeDelta: latitudeMeters, longitudeDelta: longitudeMeters)
-                )
+            return CLLocation(latitude: latitude, longitude: longitude)
         }
         
-        set(newRegion) {
-            let newLatitude = newRegion.center.latitude
-            let newLongitude = newRegion.center.longitude
-            let newLatitudeMeters = newRegion.span.latitudeDelta
-            let newLongitudeMeters = newRegion.span.longitudeDelta
+        set(newLocation) {
+            let newLatitude = newLocation.coordinate.latitude
+            let newLongitude = newLocation.coordinate.longitude
             
             if CLLocationCoordinate2DIsValid(CLLocationCoordinate2D(latitude: newLatitude, longitude: newLongitude)) {
-                
                 latitude = newLatitude
                 longitude = newLongitude
-                latitudeMeters = newLatitudeMeters
-                longitudeMeters = newLongitudeMeters
                 save()
             } else {
-                print("Region Invalid")
+                print("Location Invalid")
             }
         }
     }
+    
     
     func lookupLocation(for placeName: String) {
         let coder = CLGeocoder()

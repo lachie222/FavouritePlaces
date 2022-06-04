@@ -72,9 +72,9 @@ struct PlaceDetailView: View {
 
                 
                 List {
-                    NavigationLink(destination: MapDetailView(place: place, region: place.placeLocation).navigationBarItems(trailing: EditButton()), label: {
+                    NavigationLink(destination: MapDetailView(place: place, region: MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude), span: MKCoordinateSpan(latitudeDelta: place.latitudeMeters, longitudeDelta: place.longitudeMeters))).navigationBarItems(trailing: EditButton()), label: {
                         HStack{
-                            MapSnapshotView(region: place.placeLocation)
+                            MapSnapshotView(region: MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude), span: MKCoordinateSpan(latitudeDelta: place.latitudeMeters, longitudeDelta: place.longitudeMeters)))
                                 .frame(width: 150, height: 50, alignment: .center)
                             Spacer()
                             Text("Map of \(place.placeName)")
