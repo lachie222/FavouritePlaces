@@ -70,19 +70,22 @@ extension Place {
                 return MKCoordinateRegion(
                     center: CLLocationCoordinate2D(latitude: latitude,
                                                    longitude: longitude),
-                    latitudinalMeters: 5000,
-                    longitudinalMeters: 5000
+                    span: MKCoordinateSpan(latitudeDelta: latitudeMeters, longitudeDelta: longitudeMeters)
                 )
         }
         
         set(newRegion) {
             let newLatitude = newRegion.center.latitude
             let newLongitude = newRegion.center.longitude
+            let newLatitudeMeters = newRegion.span.latitudeDelta
+            let newLongitudeMeters = newRegion.span.longitudeDelta
             
             if CLLocationCoordinate2DIsValid(CLLocationCoordinate2D(latitude: newLatitude, longitude: newLongitude)) {
                 
                 latitude = newLatitude
                 longitude = newLongitude
+                latitudeMeters = newLatitudeMeters
+                longitudeMeters = newLongitudeMeters
                 save()
             } else {
                 print("Region Invalid")

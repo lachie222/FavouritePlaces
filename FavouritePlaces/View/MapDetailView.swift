@@ -13,7 +13,7 @@ struct MapDetailView: View {
     @Environment(\.editMode) var editMode
     @ObservedObject var place: Place
     @State var region: MKCoordinateRegion
-    
+
     var body: some View {
         Map(coordinateRegion: $region).onChange(of: region, perform: {newValue in
             place.placeLocation = newValue
@@ -40,6 +40,8 @@ struct MapDetailView: View {
         else {
             Text("Latitude: \(place.placeLatitude)")
             Text("Longitude: \(place.placeLongitude)")
+            Text("Latitude Delta: \(String(place.latitudeMeters))")
+            Text("Longitude Delta: \(String(place.longitudeMeters))")
         }
 
     }

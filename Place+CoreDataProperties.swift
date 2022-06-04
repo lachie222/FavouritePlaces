@@ -2,7 +2,7 @@
 //  Place+CoreDataProperties.swift
 //  FavouritePlaces
 //
-//  Created by Lachlan Manson on 19/5/2022.
+//  Created by Lachlan Manson on 4/6/2022.
 //
 //
 
@@ -21,6 +21,8 @@ extension Place {
     @NSManaged public var longitude: Double
     @NSManaged public var name: String?
     @NSManaged public var notes: String?
+    @NSManaged public var latitudeMeters: Double
+    @NSManaged public var longitudeMeters: Double
 
 }
 

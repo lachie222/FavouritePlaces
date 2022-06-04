@@ -10,7 +10,7 @@ import MapKit
 
 struct MapSnapshotView: View {
   let region: MKCoordinateRegion
-  var span: CLLocationDegrees = 0.01
+  
 
   @State private var snapshotImage: UIImage? = nil
     

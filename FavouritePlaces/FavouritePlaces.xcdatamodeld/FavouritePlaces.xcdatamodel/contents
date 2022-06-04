@@ -3,11 +3,13 @@
     <entity name="Place" representedClassName="Place" syncable="YES" codeGenerationType="class">
         <attribute name="imageURL" optional="YES" attributeType="URI"/>
         <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="latitudeMeters" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitudeMeters" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String" defaultValueString=""/>
         <attribute name="notes" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Place" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="Place" positionX="-63" positionY="-18" width="128" height="134"/>
     </elements>
 </model>
