@@ -1,26 +1,31 @@
 {
   "images" : [
     {
+      "filename" : "d356a2364a035c852d4ff72b43746239-3.jpeg",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
+      "filename" : "d356a2364a035c852d4ff72b43746239-4.jpeg",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
+      "filename" : "d356a2364a035c852d4ff72b43746239-5.jpeg",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
+      "filename" : "d356a2364a035c852d4ff72b43746239-6.jpeg",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
+      "filename" : "d356a2364a035c852d4ff72b43746239-7.jpeg",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
@@ -31,61 +36,73 @@
       "size" : "40x40"
     },
     {
+      "filename" : "d356a2364a035c852d4ff72b43746239.jpeg",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
+      "filename" : "d356a2364a035c852d4ff72b43746239-9.jpeg",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
     },
     {
+      "filename" : "d356a2364a035c852d4ff72b43746239-10.jpeg",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "20x20"
     },
     {
+      "filename" : "d356a2364a035c852d4ff72b43746239-11.jpeg",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
+      "filename" : "d356a2364a035c852d4ff72b43746239-13.jpeg",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "29x29"
     },
     {
+      "filename" : "d356a2364a035c852d4ff72b43746239-14.jpeg",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
+      "filename" : "d356a2364a035c852d4ff72b43746239-12.jpeg",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "40x40"
     },
     {
+      "filename" : "d356a2364a035c852d4ff72b43746239-8.jpeg",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
+      "filename" : "d356a2364a035c852d4ff72b43746239-2.jpeg",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "76x76"
     },
     {
+      "filename" : "d356a2364a035c852d4ff72b43746239-15.jpeg",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "76x76"
     },
     {
+      "filename" : "d356a2364a035c852d4ff72b43746239-16.jpeg",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "83.5x83.5"
     },
     {
+      "filename" : "d356a2364a035c852d4ff72b43746239-1.jpeg",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"
