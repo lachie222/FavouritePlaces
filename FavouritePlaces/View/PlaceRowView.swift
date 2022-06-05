@@ -10,6 +10,9 @@ import SwiftUI
 struct PlaceRowView: View {
     @ObservedObject var place: Place
     @State var image = Image(systemName: "photo").resizable()
+    /**
+     Row view includes image thumbnail
+     */
     var body: some View {
         HStack {
             image.aspectRatio(contentMode: .fit)

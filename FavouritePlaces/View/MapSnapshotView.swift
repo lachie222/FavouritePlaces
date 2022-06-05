@@ -10,18 +10,19 @@ import MapKit
 
 struct MapSnapshotView: View {
   let region: MKCoordinateRegion
-  
+  var span: CLLocationDegrees = 0.01
 
   @State private var snapshotImage: UIImage? = nil
-    
+    /**
+     Generates a snapshot of map region
+     - Returns: Snapshot Image
+     */
     func generateSnapshot(width: CGFloat, height: CGFloat) {
 
-      // Map options.
       let mapOptions = MKMapSnapshotter.Options()
       mapOptions.region = region
       mapOptions.size = CGSize(width: width, height: height)
 
-      // Create the snapshotter and run it.
       let snapshotter = MKMapSnapshotter(options: mapOptions)
       snapshotter.start { (snapshotOrNil, errorOrNil) in
         if let error = errorOrNil {
@@ -34,6 +35,9 @@ struct MapSnapshotView: View {
       }
     }
 
+    /**
+     Display view for snapshot image
+     */
     var body: some View {
       GeometryReader { geometry in
         Group {

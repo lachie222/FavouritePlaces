@@ -12,6 +12,7 @@ import MapKit
 struct MapDetailView: View {
     @Environment(\.editMode) var editMode
     @ObservedObject var place: Place
+    /** Local Region Variable*/
     @State var region: MKCoordinateRegion
 
     var body: some View {
@@ -29,6 +30,9 @@ struct MapDetailView: View {
                     }.textFieldStyle(PrimaryTextFieldStyle())
                 }.padding()
             }
+            /**
+             OnChange of region coordinates or place location coordinates keeps map and stored coordinates in sync
+             */
             Map(coordinateRegion: $region).onChange(of: region, perform: {newValue in
                 place.longitude = newValue.center.longitude
                 place.latitude = newValue.center.latitude

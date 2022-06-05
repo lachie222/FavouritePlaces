@@ -15,6 +15,13 @@ fileprivate let defaultImage = Image(systemName: "photo")
 fileprivate var downloadedImages = [URL: Image]()
 
 extension Place {
+    /**
+        Extends place CoreData model to include extra variables and methods
+     */
+    
+    /**
+     Getter and setter for sunrise/sunset times
+     */
     var sunriseSunset: SunriseSunset {
         get { SunriseSunset(sunrise: sunrise ?? "Unknown", sunset: sunset ?? "Unknown")  }
         set {
@@ -24,7 +31,9 @@ extension Place {
         }
     }
 
-    
+    /**
+     Getter and setter for name as String
+     */
     var placeName: String {
         get { name ?? ""}
         set {
@@ -33,6 +42,9 @@ extension Place {
         }
     }
     
+    /**
+     Getter and setter for notes as String
+     */
     var placeNotes: String {
         get { notes ?? "" }
         set {
@@ -41,6 +53,10 @@ extension Place {
         }
     }
     
+    
+    /**
+     Getter and setter for URL as string
+     */
     var placeUrlString: String {
         get { imageURL?.absoluteString ?? "" }
         set {
@@ -50,6 +66,9 @@ extension Place {
         }
     }
     
+    /**
+     Getter and setter for latitude as String
+     */
     var placeLatitude: String {
         get { String(latitude) }
         set {
@@ -62,6 +81,9 @@ extension Place {
         }
     }
     
+    /**
+     Getter and setter for longitude as String
+     */
     var placeLongitude: String {
         get { String(longitude) }
         set {
@@ -74,6 +96,9 @@ extension Place {
         }
     }
     
+    /**
+     Getter and setter for Location as CLLocation
+     */
     var placeLocation: CLLocation {
         get {
             return CLLocation(latitude: latitude, longitude: longitude)
@@ -93,7 +118,9 @@ extension Place {
         }
     }
     
-    
+    /**
+     Function for geocoding coordinates based on place name
+     */
     func lookupLocation(for placeName: String) {
         let coder = CLGeocoder()
         coder.geocodeAddressString(placeName) { optionalPlacemarks, optionalError in
@@ -115,6 +142,9 @@ extension Place {
         }
     }
 
+    /**
+     Function for geocoding placeName based on CLLocation coordinates
+     */
     func lookupName(for location: CLLocation) {
         let coder = CLGeocoder()
         coder.reverseGeocodeLocation(location) { optionalPlacemarks, optionalError in
@@ -131,6 +161,9 @@ extension Place {
         }
     }
     
+    /**
+     Function for looking up sunrise/sunset times using API
+     */
     func lookupSunriseAndSunset() {
         guard let url = URL(string: "https://api.sunrise-sunset.org/json?lat=\(placeLatitude)&lng=\(placeLongitude)") else {
             print("Bad URL")
@@ -162,7 +195,10 @@ extension Place {
         sunriseSunset = convertedTime
     }
     
-    
+    /**
+     Returns image based on url stored in object
+     - Returns: Image
+     */
     func retrieveImage() async -> Image {
         guard let url = imageURL else { return defaultImage}
         if let image = downloadedImages[url] {return image}
@@ -180,7 +216,9 @@ extension Place {
     }
     
     
-    
+    /**
+     Saves current object state to CoreData
+     */
     @discardableResult
     func save() -> Bool {
         do {

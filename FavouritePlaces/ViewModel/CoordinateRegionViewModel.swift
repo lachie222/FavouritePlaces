@@ -9,26 +9,10 @@ import Foundation
 import MapKit
 
 extension MKCoordinateRegion: Equatable
+/**
+    Makes MKCoordinateRegion equatable
+ */
 {
-    var latitudeString: String {
-        get { "\(center.latitude)" }
-        set {
-            guard let degrees = CLLocationDegrees(newValue) else { return }
-            if CLLocationCoordinate2DIsValid(CLLocationCoordinate2D(latitude: degrees, longitude: center.longitude)) {
-                center.latitude = degrees
-            } else { return }
-        }
-    }
-    var longitudeString: String {
-        get { "\(center.longitude)" }
-        set {
-            guard let degrees = CLLocationDegrees(newValue) else { return }
-            if CLLocationCoordinate2DIsValid(CLLocationCoordinate2D(latitude: center.latitude, longitude: degrees)) {
-                center.longitude = degrees
-            } else { return }
-        }
-    }
-    
    public static func == (lhs: MKCoordinateRegion, rhs: MKCoordinateRegion) -> Bool
    {
        if lhs.center.latitude != rhs.center.latitude || lhs.center.longitude != rhs.center.longitude

@@ -9,6 +9,9 @@ import Foundation
 import SwiftUI
 import CoreData
 
+/**
+ Adds new place to CoreData
+ */
 func addPlace(context: NSManagedObjectContext) {
     withAnimation {
         let newPlace = Place(context: context)
@@ -25,6 +28,9 @@ func addPlace(context: NSManagedObjectContext) {
     }
 }
 
+/**
+ Deletes place from CoreData
+ */
 func deletePlaces(offsets: IndexSet, context: NSManagedObjectContext, places: FetchedResults<Place>) {
     withAnimation {
         offsets.map { places[$0] }.forEach(context.delete)

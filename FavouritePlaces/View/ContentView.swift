@@ -10,6 +10,9 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    /**
+     Fetches places from CoreData
+     */
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Place.name, ascending: true)],
         animation: .default)
