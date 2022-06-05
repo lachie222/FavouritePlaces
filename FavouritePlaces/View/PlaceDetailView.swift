@@ -17,8 +17,6 @@ struct PlaceDetailView: View {
     @State var longitudeValidity = false
     @State var latitudeValidity = false
     @State var image = Image(systemName: "photo")
-    @State var sunrise = "Unknown"
-    @State var sunset = "Unknown"
     
     var body: some View {
         VStack (alignment: .center, spacing: 5) {

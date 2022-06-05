@@ -26,8 +26,8 @@ struct MapDetailView: View {
                     Text("Search Place: ")
                     TextField("Search Place", text: $place.placeName) {
                         place.lookupLocation(for: place.placeName)
-                    }
-                }
+                    }.textFieldStyle(PrimaryTextFieldStyle())
+                }.padding()
             }
             Map(coordinateRegion: $region).onChange(of: region, perform: {newValue in
                 place.longitude = newValue.center.longitude
