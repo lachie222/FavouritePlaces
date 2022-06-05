@@ -22,6 +22,7 @@
 		2D4AEC21282395EB0076AD70 /* PlaceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4AEC20282395EB0076AD70 /* PlaceListView.swift */; };
 		2D4AEC232823981F0076AD70 /* PlaceCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4AEC222823981F0076AD70 /* PlaceCRUD.swift */; };
 		2D4AEC2A2823C38D0076AD70 /* PrimaryTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4AEC292823C38D0076AD70 /* PrimaryTextFieldStyle.swift */; };
+		2DCA3F51284C41B3002A07ED /* SunriseSunsetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCA3F50284C41B3002A07ED /* SunriseSunsetModel.swift */; };
 		2DD00D6F2835F0FD00CB6EC1 /* MapDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD00D6E2835F0FD00CB6EC1 /* MapDetailView.swift */; };
 		2DD00D762835F39200CB6EC1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD00D742835F38200CB6EC1 /* CoreLocation.framework */; };
 		2DD00D7A2836442300CB6EC1 /* CoordinateRegionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD00D792836442300CB6EC1 /* CoordinateRegionViewModel.swift */; };
@@ -65,6 +66,7 @@
 		2D4AEC20282395EB0076AD70 /* PlaceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListView.swift; sourceTree = "<group>"; };
 		2D4AEC222823981F0076AD70 /* PlaceCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCRUD.swift; sourceTree = "<group>"; };
 		2D4AEC292823C38D0076AD70 /* PrimaryTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTextFieldStyle.swift; sourceTree = "<group>"; };
+		2DCA3F50284C41B3002A07ED /* SunriseSunsetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetModel.swift; sourceTree = "<group>"; };
 		2DD00D6E2835F0FD00CB6EC1 /* MapDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailView.swift; sourceTree = "<group>"; };
 		2DD00D702835F1FF00CB6EC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2DD00D722835F1FF00CB6EC1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -125,6 +127,7 @@
 		2D26851A282240BF00ED3FBE /* FavouritePlaces */ = {
 			isa = PBXGroup;
 			children = (
+				2DCA3F4F284C419D002A07ED /* Model */,
 				2DD00D702835F1FF00CB6EC1 /* Info.plist */,
 				2D4AEC2B2823C4690076AD70 /* Style */,
 				2D26855628238E9D00ED3FBE /* View */,
@@ -199,6 +202,14 @@
 				2D4AEC292823C38D0076AD70 /* PrimaryTextFieldStyle.swift */,
 			);
 			path = Style;
+			sourceTree = "<group>";
+		};
+		2DCA3F4F284C419D002A07ED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2DCA3F50284C41B3002A07ED /* SunriseSunsetModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		2DD00D712835F1FF00CB6EC1 /* Frameworks */ = {
@@ -341,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D4AEC2A2823C38D0076AD70 /* PrimaryTextFieldStyle.swift in Sources */,
+				2DCA3F51284C41B3002A07ED /* SunriseSunsetModel.swift in Sources */,
 				2D268525282240C200ED3FBE /* Persistence.swift in Sources */,
 				2DD00D6F2835F0FD00CB6EC1 /* MapDetailView.swift in Sources */,
 				2D26855828238EEE00ED3FBE /* PlaceRowView.swift in Sources */,

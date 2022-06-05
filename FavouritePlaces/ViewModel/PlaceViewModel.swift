@@ -15,6 +15,15 @@ fileprivate let defaultImage = Image(systemName: "photo")
 fileprivate var downloadedImages = [URL: Image]()
 
 extension Place {
+    var sunriseSunset: SunriseSunset {
+        get { SunriseSunset(sunrise: sunrise ?? "Unknown", sunset: sunset ?? "Unknown")  }
+        set {
+            self.sunrise = newValue.sunrise
+            self.sunset = newValue.sunset
+            save()
+        }
+    }
+
     
     var placeName: String {
         get { name ?? ""}
@@ -118,22 +127,39 @@ extension Place {
                 return
             }
             let placemark = placemarks[0]
-            for value in [
-                \CLPlacemark.name,
-                \.country,
-                \.isoCountryCode,
-                \.postalCode,
-                \.administrativeArea,
-                \.subAdministrativeArea,
-                \.locality,
-                \.subLocality,
-                \.thoroughfare,
-                \.subThoroughfare
-            ] {
-                print(String(describing: placemark[keyPath: value]))
-            }
             self.placeName = placemark.subAdministrativeArea ?? placemark.locality ?? placemark.subLocality ?? placemark.name ?? placemark.thoroughfare ?? placemark.subThoroughfare ?? placemark.country ?? ""
         }
+    }
+    
+    func lookupSunriseAndSunset() {
+        guard let url = URL(string: "https://api.sunrise-sunset.org/json?lat=\(placeLatitude)&lng=\(placeLongitude)") else {
+            print("Bad URL")
+            return
+        }
+        guard let undecodedJsonData = try? Data(contentsOf: url) else {
+            print("Could not find sunrise/sunset")
+            return
+        }
+        guard let decodedJsonData = try? JSONDecoder().decode(SunriseSunsetAPI.self, from: undecodedJsonData) else {
+            print("Could not decode JSON API:\n\(String(data: undecodedJsonData, encoding: .utf8) ?? "empty Data")")
+            return
+        }
+        let inputFormat = DateFormatter()
+        inputFormat.dateStyle = .none
+        inputFormat.timeStyle = .medium
+        inputFormat.timeZone = .init(secondsFromGMT: 0)
+        let outputFormat = DateFormatter()
+        outputFormat.dateStyle = .none
+        outputFormat.timeStyle = .medium
+        outputFormat.timeZone = .current
+        var convertedTime = decodedJsonData.results
+        if let time = inputFormat.date(from: decodedJsonData.results.sunrise) {
+            convertedTime.sunrise = outputFormat.string(from: time)
+        }
+        if let time = inputFormat.date(from: decodedJsonData.results.sunset) {
+            convertedTime.sunset = outputFormat.string(from: time)
+        }
+        sunriseSunset = convertedTime
     }
     
     

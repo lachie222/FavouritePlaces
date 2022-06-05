@@ -17,6 +17,8 @@ struct PlaceDetailView: View {
     @State var longitudeValidity = false
     @State var latitudeValidity = false
     @State var image = Image(systemName: "photo")
+    @State var sunrise = "Unknown"
+    @State var sunset = "Unknown"
     
     var body: some View {
         VStack (alignment: .center, spacing: 5) {
@@ -86,13 +88,31 @@ struct PlaceDetailView: View {
                         Text(place.placeNotes)
                     }
                 }
+                HStack {
+                    Label(place.sunrise ?? "Unknown", systemImage: "sunrise")
+                        .padding(.leading)
+                    Spacer()
+                    Label(place.sunset ?? "Unknown", systemImage: "sunset")
+                        .padding(.trailing)
+                }.padding().task {
+                    place.lookupSunriseAndSunset()
+                }
             }
         }
     }
 }
 
-/*struct PlaceDetailView_Previews: PreviewProvider {
+struct PlaceDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceDetailView()
+        let context = PersistenceController.init().container.viewContext
+        let newPlace = Place(context: context)
+        PlaceDetailView(place: newPlace).onAppear(
+            perform: {
+                newPlace.placeName = "Brisbane"
+                newPlace.imageURL = URL(string: "https://www.visitbrisbane.com.au/~/media/inner-city/the-city/2020/brisbanecitybedaowned720x405.ashx")
+                newPlace.placeNotes = "Welcome to Brisbane!"
+                
+            }
+        )
     }
-}*/
+}
